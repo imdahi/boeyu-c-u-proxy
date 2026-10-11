@@ -1,0 +1,258 @@
+[
+    {
+        "id":  "logout",
+        "name":  "登出",
+        "enabled":  true,
+        "url":  "https://s.boeyu.com/user/user/userLogoutControl",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  false,
+                          "type":  "replaceResponseStatus",
+                          "values":  {
+                                         "statusCode":  200
+                                     }
+                      },
+                      {
+                          "enabled":  false,
+                          "type":  "replaceResponseHeader",
+                          "values":  {
+                                         "headers":  {
+                                                         "Access-Control-Allow-Origin":  "*",
+                                                         "Access-Control-Allow-Methods":  "POST, GET",
+                                                         "Access-Control-Max-Age":  "3600",
+                                                         "Access-Control-Allow-Headers":  "*",
+                                                         "Cache-Control":  "no-cache",
+                                                         "Pragma":  "no-cache",
+                                                         "Access-Control-Allow-Credentials":  "true",
+                                                         "vary":  "accept-encoding",
+                                                         "Content-Encoding":  "gzip",
+                                                         "Content-Type":  "application/json",
+                                                         "Date":  "Sat, 29 Aug 2026 10:59:42 GMT",
+                                                         "Keep-Alive":  "timeout=60",
+                                                         "Connection":  "keep-alive",
+                                                         "Content-Length":  "74"
+                                                     }
+                                     }
+                      },
+                      {
+                          "enabled":  true,
+                          "type":  "replaceResponseBody",
+                          "values":  {
+                                         "body":  "{\"status\":         200,\"msg\":         \"\",\"data\":         null}"
+                                     }
+                      }
+                  ]
+    },
+    {
+        "id":  "updateControlState",
+        "name":  "管控状态更新覆盖",
+        "enabled":  true,
+        "url":  "https://s.boeyu.com/user/updateControlState",
+        "type":  "requestReplace",
+        "items":  [
+                      {
+                          "enabled":  false,
+                          "type":  "replaceRequestLine",
+                          "values":  {
+                                         "path":  "/user/updateControlState"
+                                     }
+                      },
+                      {
+                          "enabled":  false,
+                          "type":  "replaceRequestHeader",
+                          "values":  {
+                                         "headers":  {
+                                                         "Accept-Language":  "zh-CN,zh;q=0.8",
+                                                         "User-Agent":  "okhttp-okgo/jeasonlzy",
+                                                         "Content-Type":  "application/x-www-form-urlencoded",
+                                                         "Content-Length":  "33",
+                                                         "Host":  "s.boeyu.com",
+                                                         "Connection":  "Keep-Alive",
+                                                         "Accept-Encoding":  "gzip"
+                                                     }
+                                     }
+                      },
+                      {
+                          "enabled":  true,
+                          "type":  "replaceRequestBody",
+                          "values":  {
+                                         "body":  ""
+                                     }
+                      }
+                  ]
+    },
+    {
+        "id":  "reset",
+        "name":  "重置至最新策略",
+        "enabled":  false,
+        "url":  "https://s.boeyu.com/user/user/getUserStrategy",
+        "type":  "requestReplace",
+        "items":  [
+                      {
+                          "enabled":  false,
+                          "type":  "replaceRequestLine",
+                          "values":  {
+                                         "path":  "/user/user/getUserStrategy"
+                                     }
+                      },
+                      {
+                          "enabled":  false,
+                          "type":  "replaceRequestHeader",
+                          "values":  {
+                                         "headers":  {
+                                                         "Accept-Language":  "zh-CN,zh;q=0.8",
+                                                         "User-Agent":  "okhttp-okgo/jeasonlzy",
+                                                         "Authorization":  "MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAsMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=",
+                                                         "Content-Type":  "application/x-www-form-urlencoded",
+                                                         "Content-Length":  "11",
+                                                         "Host":  "s.boeyu.com",
+                                                         "Connection":  "Keep-Alive",
+                                                         "Accept-Encoding":  "gzip"
+                                                     }
+                                     }
+                      },
+                      {
+                          "enabled":  true,
+                          "type":  "replaceRequestBody",
+                          "values":  {
+                                         "body":  "randomNum=1"
+                                     }
+                      }
+                  ]
+    },
+    {
+        "id":  "logs_clear",
+        "name":  "置空日志",
+        "enabled":  true,
+        "url":  "https://logs.boeyu.com/",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  true,
+                          "type":  "replaceResponseBody",
+                          "values":  {
+                                         "body":  "{\"status\":         200,\"msg\":         \"\",\"data\":         null}"
+                                     }
+                      }
+                  ]
+    },
+    {
+        "id":  "kaiwang_net2",
+        "name":  "网络连接",
+        "enabled":  true,
+        "url":  "https://s.boeyu.com/user/user/getUserStrategy",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  true,
+                          "type":  "replaceJsonBody",
+                          "values":  {
+                                         "json":  {
+                                                      "data.strategySoftwareRule.networkMode":  2
+                                                  }
+                                     }
+                      }
+                  ]
+    },
+    {
+        "id":  "kaiwang_flags",
+        "name":  "全功能",
+        "enabled":  true,
+        "url":  "https://s.boeyu.com/user/user/getUserStrategy",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  true,
+                          "type":  "replaceJsonBody",
+                          "values":  {
+                                         "json":  {
+                                                      "data.strategyDeviceInterface.deviceInterfaceFlagList":  "1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099"
+                                                  }
+                                     }
+                      }
+                  ]
+    },
+    {
+        "id":  "kaiwang_1004",
+        "name":  "蓝牙连接",
+        "enabled":  true,
+        "url":  "https://s.boeyu.com/user/user/getUserStrategy",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  true,
+                          "type":  "replaceJsonBody",
+                          "values":  {
+                                         "json":  {
+                                                      "data.strategyDeviceInterface.deviceInterfaceFlagList+":  "1004"
+                                                  }
+                                     }
+                      }
+                  ]
+    },
+    {
+        "id":  "kaiwang_all",
+        "name":  "允许全部应用安装",
+        "enabled":  true,
+        "url":  "https://s.boeyu.com/user/user/getUserStrategy",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  true,
+                          "type":  "replaceJsonBody",
+                          "values":  {
+                                         "json":  {
+                                                      "data.strategySoftwareWhiteList+":  [
+                                                                                              {
+                                                                                                  "name":  "all",
+                                                                                                  "whiteList":  "*",
+                                                                                                  "packageName":  "*",
+                                                                                                  "logo":  "software/25101483F2BPM5AW.png",
+                                                                                                  "isWhole":  0,
+                                                                                                  "whiteId":  "26031664FYXAFDGR"
+                                                                                              }
+                                                                                          ]
+                                                  }
+                                     }
+                      }
+                  ]
+    },
+{
+        "id":  "all_200",
+        "name":  "全体操作请求默许",
+        "enabled":  false,
+        "fallback":  true,
+        "url":  "https://s.boeyu.com/",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  true,
+                          "type":  "replaceJsonBody",
+                          "values":  {
+                                         "json":  {
+                                                       "status":  200
+                                                   }
+                                     }
+                      }
+                  ]
+    },
+{
+        "id":  "preference_custom",
+        "name":  "设备定义参数置空",
+        "enabled":  false,
+        "url":  "https://s.boeyu.com/user/user/getUserStrategy",
+        "type":  "responseReplace",
+        "items":  [
+                      {
+                          "enabled":  true,
+                          "type":  "replaceJsonBody",
+                          "values":  {
+                                         "json":  {
+                                                       "data.preferenceCustom":  null
+                                                   }
+                                     }
+                      }
+                  ]
+    }
+]

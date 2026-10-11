@@ -1,0 +1,82 @@
+{
+    "data_dir":  "/data",
+    "cert_days":  36500,
+    "cert_domains":  [
+                         "*.boeyu.com",
+                         "s.boeyu.com",
+                         "logs.boeyu.com"
+                     ],
+    "allowed_hosts":  [
+                          "s.boeyu.com",
+                          "logs.boeyu.com"
+                      ],
+    "admin_addr":  ":8080",
+    "admin_token":  "admin114514",
+    "backends":  {
+
+                 },
+    "insecure_skip_verify":  false,
+    "read_timeout_sec":  30,
+    "idle_timeout_sec":  120,
+    "listeners":  [
+                      {
+                          "id":  "huifujiesuo",
+                          "name":  "复原+置空管理设备密码",
+                          "addr":  ":9931",
+                          "enabled":  true,
+                          "proxy":  true,
+                          "offline":  false,
+                          "rules_file":  "rules.json",
+"enable_rules":  [
+                                                "logout",
+                                                "reset",
+                                                "logs_clear",
+                                                "updateControlState"
+                                            ]
+                      },
+                      {
+                          "id":  "kaiwang",
+                          "name":  "打开全局应用网络连接",
+                          "addr":  ":9932",
+                          "enabled":  true,
+                          "proxy":  true,
+                          "offline":  false,
+                          "rules_file":  "rules.json",
+"enable_rules":  [
+                                                "kaiwang_net2",
+                                                "logs_clear",
+                                                "updateControlState"
+                                            ]
+                      },
+                      {
+                          "id":  "kangwangjiasuoyou",
+                          "name":  "万能旅馆模式",
+                          "addr":  ":9933",
+                          "enabled":  true,
+                          "proxy":  true,
+                          "offline":  false,
+                          "rules_file":  "rules.json",
+"enable_rules":  [
+                                                "kaiwang_all",
+                                                "kaiwang_flags",
+                                                "logs_clear",
+                                                "updateControlState"
+                                            ]
+                      },
+                      {
+                          "id":  "kaiwangjialanya",
+                          "name":  "打开全局应用网络连接和蓝牙",
+                          "addr":  ":9934",
+                          "enabled":  true,
+                          "proxy":  true,
+                          "offline":  false,
+                          "rules_file":  "rules.json",
+"enable_rules":  [
+                                                "kaiwang_1004",
+                                                "kaiwang_net2",
+                                                "logs_clear",
+                                                "updateControlState"
+                                            ]
+                      }
+                  ]
+}

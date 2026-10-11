@@ -1,0 +1,35 @@
+# boeyu-proxy (POC)：MITM 请求改写演示，仅作技术验证用途
+services:
+  boeyu-proxy:
+    build: .
+    image: boeyu-proxy:latest
+    container_name: boeyu-proxy
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+    ports:
+      # 4个端口分组（各自不同功能列表，可在后台改）:
+      #   huifujiesuo  (9931) 复原+置空管理设备密码: logout+reset(+log)
+      #   kaiwang      (9932) 打开全局应用网络连接: kaiwang_net2 (+log)
+      #   kangwangjiasuoyou (9933) 万能旅馆模式: kaiwang_all+kaiwang_flags (+log)
+      #   kaiwangjialanya   (9934) 打开全局应用网络连接和蓝牙: kaiwang_1004+kaiwang_net2 (+log)
+      - "9931:9931"
+      - "9932:9932"
+      - "9933:9933"
+      - "9934:9934"
+      # web admin - externally exposed on 9964 (requires admin_token)
+      - "9964:8080"
+    volumes:
+      # named volumes: are auto-seeded from the image on first start, so the
+      # container always finds /config/config.json (bind mount would shadow it)
+      - boeyu-config:/config
+      - boeyu-data:/data
+    environment:
+      - TZ=Asia/Shanghai
+
+volumes:
+  boeyu-config:
+  boeyu-data:
